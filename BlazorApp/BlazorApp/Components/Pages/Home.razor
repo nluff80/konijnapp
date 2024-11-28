@@ -1,7 +1,18 @@
 ﻿@page "/"
+@inject IConfiguration Configuration
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>@_welcomeMessage</h1>
+
 
 Welcome to your new app.
+
+@code {
+    private string? _welcomeMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _welcomeMessage = Configuration["TestSetting"];
+    }
+}
